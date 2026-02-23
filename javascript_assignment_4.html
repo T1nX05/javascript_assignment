@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Monster Display</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    select {
+      padding: 5px;
+      margin-bottom: 15px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 50%;
+    }
+
+    th, td {
+      border: 1px solid #333;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      width: 30%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Monster Display</h2>
+
+  <!-- Dropdown -->
+  <label for="monsterSelect">Select Monster:</label>
+  <select id="monsterSelect" onchange="displayMonster()">
+    <option value="-">-</option>
+  </select>
+
+  <!-- Monster Data -->
+  <table>
+    <tr>
+      <th>Name</th>
+      <td id="m-name"></td>
+    </tr>
+    <tr>
+      <th>Type</th>
+      <td id="m-type"></td>
+    </tr>
+    <tr>
+      <th>Level</th>
+      <td id="m-level"></td>
+    </tr>
+    <tr>
+      <th>HP</th>
+      <td id="m-hp"></td>
+    </tr>
+  </table>
+
+  <script>
+    // JSON Data
+    const monsters = [
+      { name: "Slime", type: "Water", level: 1, hp: 50 },
+      { name: "Goblin", type: "Earth", level: 3, hp: 120 },
+      { name: "Dragon", type: "Fire", level: 10, hp: 1500 },
+      { name: "Ghost", type: "Dark", level: 5, hp: 300 }
+    ];
+
+    const select = document.getElementById("monsterSelect");
+
+    // Create dropdown options
+    monsters.forEach(monster => {
+      const option = document.createElement("option");
+      option.value = monster.name;
+      option.innerText = monster.name;
+      select.appendChild(option);
+    });
+
+    function displayMonster() {
+      const selectedName = select.value;
+
+      // If default selected, clear data
+      if (selectedName === "-") {
+        clearData();
+        return;
+      }
+
+      // Find matched monster
+      for (let monster of monsters) {
+        if (monster.name === selectedName) {
+          document.getElementById("m-name").innerText = monster.name;
+          document.getElementById("m-type").innerText = monster.type;
+          document.getElementById("m-level").innerText = monster.level;
+          document.getElementById("m-hp").innerText = monster.hp;
+          break;
+        }
+      }
+    }
+
+    function clearData() {
+      document.getElementById("m-name").innerText = "";
+      document.getElementById("m-type").innerText = "";
+      document.getElementById("m-level").innerText = "";
+      document.getElementById("m-hp").innerText = "";
+    }
+  </script>
+
+</body>
+</html>
