@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add New Item</title>
+  </head>
+
+  <body>
+    <form
+      action="https://athiphat-mybackend-01.southeastasia.cloudapp.azure.com/api/product"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <fieldset>
+        <legend>General Info</legend>
+
+        <p>
+          <label>Item Name</label><br />
+          <input type="text" name="itemName" value="Sample Item" />
+        </p>
+
+        <p>
+          <label>Description</label><br />
+          <textarea name="itemDescription">Sample description</textarea>
+        </p>
+
+        <p>
+          <label>Cover Image</label><br />
+          <input type="file" name="coverImage" />
+        </p>
+
+        <p>
+          <label>Category</label><br />
+          <select name="category">
+            <option value="notSpecified">Not Specified</option>
+            <option value="consumption">Consumption</option>
+            <option value="household">Household</option>
+            <option value="electronic">Electronic</option>
+            <option value="gadget">Gadget</option>
+          </select>
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Misc.</legend>
+
+        <p>
+          <label>Inventory Amount</label><br />
+          <input type="number" name="inventoryAmount" value="10" />
+        </p>
+
+        <p>
+          <label>List Price</label><br />
+          <input type="number" name="listPrice" value="199" />
+        </p>
+
+        <p>
+          <label>Available Stores</label><br />
+          <input type="checkbox" name="availableStore[]" value="Bangkok" /> Bangkok
+          <br />
+          <input type="checkbox" name="availableStore[]" value="Pattaya" /> Pattaya
+          <br />
+          <input type="checkbox" name="availableStore[]" value="Phuket" /> Phuket
+        </p>
+
+        <p>
+          <label>Status</label><br />
+          <input type="radio" name="status" value="Active" checked /> Active
+          <input type="radio" name="status" value="Inactive" /> Inactive
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Staff</legend>
+
+        <p>
+          <label>Staff Email</label><br />
+          <input
+            type="email"
+            name="staffEmail"
+            value="your_student_email@domain.com"
+          />
+        </p>
+      </fieldset>
+
+      <button type="submit">Submit Form</button>
+    </form>
+  </body>
+</html>
